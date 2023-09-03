@@ -167,11 +167,12 @@ typedef struct _LINPMEM_CR3_INFO {
 #define IOCTL_LINPMEM_READ_PHYSADDR _IOWR('a', 'a', LINPMEM_DATA_TRANSFER)
 
 // The classical vtop operation: translates virtual address to physical
-// address. Foreign userspaces not featured, yet.
+// address. Optionally, a foreign CR3 can be specified to translate a 
+// virtual address from *another* usermode process to a physical page.
 #define IOCTL_LINPMEM_VTOP_TRANSLATION_SERVICE \
 	_IOWR('a', 'b', LINPMEM_VTOP_INFO)
 
-// Currently returns your own CR3, better than nothing.
+// A service to return the CR3 of a foreign process (e.g., for use in vtop). 
 #define IOCTL_LINPMEM_QUERY_CR3 _IOWR('a', 'c', LINPMEM_CR3_INFO)
 
 #endif
