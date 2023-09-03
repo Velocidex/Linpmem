@@ -1,4 +1,0 @@
-[submodule "linpmem-cli"]
-	path = linpmem-cli
-	url = https://github.com/vobst/linpmem-cli
-	branch = master
