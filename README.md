@@ -105,8 +105,7 @@ This code is important, if you want to understand how to directly interact with 
 
 ### Command Line Interface Tool
 
-There is an (optional) basic command line interface tool to Linpmem, the *pmem CLI tool*. 
-It is linked in the Linpmem repo and is found here: [https://github.com/vobst/linpmem-cli](https://github.com/vobst/linpmem-cli). The precompiled CLI tool as well as the precompiled static library and headers can be found [here](https://github.com/vobst/linpmem-cli/releases/) (signed). Note: this is a preliminary version, be sure to check for updates, as many additions and enhancements will follow soon. 
+There is an (optional) basic command line interface tool to Linpmem, the *pmem CLI tool*. It can be found here: [https://github.com/vobst/linpmem-cli](https://github.com/vobst/linpmem-cli). Aside from the source code, there is also a precompiled CLI tool as well as the precompiled static library and headers that can be found [here](https://github.com/vobst/linpmem-cli/releases/) (signed). Note: this is a preliminary version, be sure to check for updates, as many additions and enhancements will follow soon. 
 
 The pmem CLI tool can be used for testing the various functions of Linpmem in a (relatively) safe and convenient manner. Linpmem can also be loaded by this tool instead of using insmod/rmmod, with some extra options in future. This also has the advantage that pmem auto-creates the right device for you for immediate use. It is extremely portable and runs on any Linux system (and, in fact, has been tested even on a Linux 2.6).
 
@@ -132,7 +131,7 @@ Options:
   -V, --version                      Print version
 ```
 
-If you want to compile the cli tool yourself, change to its directory. You can use `git submodule update --init --recursive` if you git-cloned linpmem (doesn't work with downloaded zips). Follow the instructions in the (cli) Readme to build it. Otherwise, just download the prebuilt program, it should work on *any* Linux. To load the kernel driver:
+If you want to compile the cli tool yourself, change to its directory and follow the instructions in the (cli) Readme to build it. Otherwise, just download the prebuilt program, it should work on *any* Linux. To load the kernel driver with the cli tool:
 
 ```
 # pmem insmod path/to/linpmem.ko
