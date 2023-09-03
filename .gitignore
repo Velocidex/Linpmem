@@ -1,0 +1,10 @@
+*.o*
+*.ko*
+*.mod*
+*.cmd*
+*.json*
+*.saved
+Module*
+Makefile.*
+demo/
+!demo/test.c
