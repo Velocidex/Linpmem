@@ -208,6 +208,19 @@ static inline void tlb_flush(uint64_t addr)
     asm volatile("invlpg (%0)" ::"r"(addr) : "memory");
 }
 
+
+// Winpmem (x64 platform) uses cli/sti.
+
+static inline void pmem_x64cli(void)
+{
+    asm volatile("cli" ::: "memory");
+}
+
+static inline void pmem_x64sti(void)
+{
+    asm volatile("sti" ::: "memory");
+}
+
 PTE_STATUS pte_remap_rogue_page_locked(PPTE_METHOD_DATA pte_data, PTE new_pte);
 
 PTE_STATUS virt_find_pte(VIRT_ADDR vaddr, volatile PPTE *pPTE,
