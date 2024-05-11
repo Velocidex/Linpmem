@@ -1,5 +1,9 @@
 # Updates and changes
 
+11. May 2024
+
+There was a serious issue in Linpmem where in the middle of PTE remapping, Linpmem could get scheduled off the CPU processor and later being re-scheduled on another CPU core along with another CPU cache. This definitely made trouble on Linux in the sense of reading wrong data. This has been fixed. (see commit log).
+
 1. Sept 2023:
 
 * Many safety enhancements. Most important, this driver is now thread-safe. It can be called simultaneously from multiple processes, while returning the correct results to each. Also, better deadlock prevention and generally safety and sanity checks.
