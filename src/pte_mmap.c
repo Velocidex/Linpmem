@@ -51,11 +51,24 @@ PTE_STATUS pte_remap_rogue_page_locked(PPTE_METHOD_DATA pte_data, PTE new_pte)
              __pfn_to_phys(new_pte.page_frame));
 
     mutex_lock(&g_rogue_page_mutex);
+
+    // It is *critical* there is no interruption while doing PTE remapping.
+    // Alternatively we could allow interruption and being re-scheduled in the plain middle 
+    // of messing with the PTEs, but then we need to make sure we get the same CPU core (with its private cache) when being re-scheduled. 
+    // On Linux, it seems a more viable option to simply use cli/sti, which works well. 
+    // The cli region is kept very small, it covers the PTE remap action and the flush command.
+    
+    // cli
+    pmem_x64cli();
+    
     // Change the pte to point to the new offset.
     WRITE_ONCE((*pte_data->rogue_pte).value, new_pte.value);
 
     // Flush the old pte from the tlbs (maybe incomplete, see comment)
     tlb_flush((uint64_t)pte_data->rogue_va.pointer);
+
+    // sti
+    pmem_x64sti();
 
     return PTE_SUCCESS;
 }
