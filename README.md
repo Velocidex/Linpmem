@@ -145,6 +145,10 @@ The [pmem command line interface](#command-line-interface-tool) is only a thin w
 
 If you do not want to use the usermode library and prefer to interface with the driver directly on your own, you can find its user-space API/interface and documentation in `./userspace_interface/linpmem_shared.h`. We also provide example code in `demo/test.c` that explains how to use the driver directly. 
 
+### Python Wrapper
+
+[LinPyMem](https://github.com/gionetti/linpymem): A Python wrapper for the linpmem driver. Available on [PyPI](https://pypi.org/project/linpymem/).
+
 ### Memdumping tool
 
 Not implemented yet.
